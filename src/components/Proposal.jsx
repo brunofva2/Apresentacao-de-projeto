@@ -1,21 +1,20 @@
 import { motion } from 'motion/react'
 import {
   TrendingDown,
-  Search,
   Smartphone,
   Globe,
   MessageCircle,
   CheckCircle2,
-  Star,
-  ArrowRight,
   ShieldCheck,
   Zap,
   LayoutTemplate,
 } from 'lucide-react'
 
-export default function Proposal() {
+// O componente agora recebe setVersion como prop do App.jsx
+export default function Proposal({ setVersion }) {
   const plans = [
     {
+      id: 'basic', // ID que o App.jsx espera para carregar o BasicVersion
       name: 'Essencial',
       price: '500',
       description: 'Ideal para começar sua presença digital.',
@@ -30,6 +29,7 @@ export default function Proposal() {
       bg: 'bg-slate-900/50',
     },
     {
+      id: 'modern', // ID que o App.jsx espera para carregar o ModernVersion
       name: 'Profissional',
       price: '700',
       popular: true,
@@ -45,6 +45,7 @@ export default function Proposal() {
       bg: 'bg-blue-900/10',
     },
     {
+      id: 'premium', // ID que o App.jsx espera para carregar o PremiumVersion
       name: 'Premium',
       price: '900',
       description: 'Para quem quer resultado de verdade.',
@@ -229,19 +230,22 @@ export default function Proposal() {
                         key={i}
                         className="flex items-start gap-3 text-slate-300"
                       >
-                        <CheckCircle2
-                          className={plan.color}
-                          size={20}
-                          shrink={0}
-                        />
+                        <CheckCircle2 className={plan.color} size={20} />
                         <span className="text-sm">{feat}</span>
                       </li>
                     ))}
                   </ul>
+
+                  {/* BOTÃO ATUALIZADO: Agora ele troca a versão no App.jsx */}
                   <button
-                    className={`w-full py-4 rounded-xl font-bold transition-all ${plan.popular ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-slate-800 text-white hover:bg-slate-700'}`}
+                    onClick={() => setVersion(plan.id)}
+                    className={`w-full py-4 rounded-xl font-bold transition-all ${
+                      plan.popular
+                        ? 'bg-blue-500 text-white hover:bg-blue-600'
+                        : 'bg-slate-800 text-white hover:bg-slate-700'
+                    }`}
                   >
-                    Escolher {plan.name}
+                    Visualizar Modelo {plan.name}
                   </button>
                 </motion.div>
               ))}

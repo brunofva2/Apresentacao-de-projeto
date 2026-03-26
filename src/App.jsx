@@ -12,20 +12,14 @@ import Proposal from './components/Proposal'
 import { Layers } from 'lucide-react'
 
 export default function App() {
-  // Estado inicial como 'proposal' conforme seu primeiro código
   const [version, setVersion] = useState('proposal')
 
-  // Garante que a página suba ao trocar de versão
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant',
-    })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [version])
 
   return (
     <div className="relative min-h-screen bg-white">
-      {/* Version Renderer com Animação de Transição */}
       <AnimatePresence mode="wait">
         <motion.div
           key={version}
@@ -34,12 +28,14 @@ export default function App() {
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          {version === 'proposal' && <Proposal />}
+          {/* AQUI ESTÁ A MUDANÇA: Passando a prop setVersion */}
+          {version === 'proposal' && <Proposal setVersion={setVersion} />}
           {version === 'basic' && <BasicVersion />}
           {version === 'modern' && <ModernVersion />}
           {version === 'premium' && <PremiumVersion />}
         </motion.div>
       </AnimatePresence>
+      
 
       {/* Fixed Toggle Control - Navegação Flutuante */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] bg-white/90 backdrop-blur-md shadow-2xl rounded-full p-2 border border-gray-200 flex items-center gap-2 transition-all hover:shadow-3xl">
@@ -70,7 +66,7 @@ export default function App() {
               : 'text-gray-600 hover:bg-gray-100'
           }`}
         >
-          Básica
+          Essencial
         </button>
 
         {/* Botão Moderna */}
@@ -82,7 +78,7 @@ export default function App() {
               : 'text-gray-600 hover:bg-gray-100'
           }`}
         >
-          Moderna
+          Profissional
         </button>
 
         {/* Botão Premium */}
