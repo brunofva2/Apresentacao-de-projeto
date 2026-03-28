@@ -37,21 +37,16 @@ export default function App() {
       </AnimatePresence>
       
 
-      {/* Fixed Toggle Control - Navegação Flutuante */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] bg-white/90 backdrop-blur-md shadow-2xl rounded-full p-2 border border-gray-200 flex items-center gap-2 transition-all hover:shadow-3xl">
-        {/* Label indicativa (esconde no mobile para poupar espaço) */}
-        <div className="pl-4 pr-2 flex items-center gap-2 text-gray-500 font-medium text-sm border-r border-gray-200 hidden sm:flex">
-          <Layers size={16} />
-          <span>Versão:</span>
-        </div>
-
+      {/* Fixed Toggle Control - Linha Única Ultra Compacta */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[95vw] max-w-md bg-white/95 backdrop-blur-md shadow-2xl rounded-full p-1 border border-gray-200 flex flex-nowrap items-center justify-between gap-1 transition-all hover:shadow-3xl">
+        
         {/* Botão Proposta */}
         <button
           onClick={() => setVersion('proposal')}
-          className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+          className={`flex-1 min-w-0 px-2 py-2 rounded-full text-[10px] sm:text-xs font-bold truncate transition-all ${
             version === 'proposal'
-              ? 'bg-slate-900 text-amber-400 shadow-md border border-amber-500/30'
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-slate-900 text-amber-400 shadow-sm border border-amber-500/30'
+              : 'text-gray-500 hover:bg-gray-100'
           }`}
         >
           Proposta
@@ -60,10 +55,10 @@ export default function App() {
         {/* Botão Básica */}
         <button
           onClick={() => setVersion('basic')}
-          className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+          className={`flex-1 min-w-0 px-2 py-2 rounded-full text-[10px] sm:text-xs font-bold truncate transition-all ${
             version === 'basic'
-              ? 'bg-[#002147] text-white shadow-md'
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-[#002147] text-white shadow-sm'
+              : 'text-gray-500 hover:bg-gray-100'
           }`}
         >
           Essencial
@@ -72,10 +67,10 @@ export default function App() {
         {/* Botão Moderna */}
         <button
           onClick={() => setVersion('modern')}
-          className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+          className={`flex-1 min-w-0 px-2 py-2 rounded-full text-[10px] sm:text-xs font-bold truncate transition-all ${
             version === 'modern'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-gray-500 hover:bg-gray-100'
           }`}
         >
           Profissional
@@ -84,14 +79,15 @@ export default function App() {
         {/* Botão Premium */}
         <button
           onClick={() => setVersion('premium')}
-          className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+          className={`flex-1 min-w-0 px-2 py-2 rounded-full text-[10px] sm:text-xs font-bold truncate transition-all ${
             version === 'premium'
-              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20'
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-sm shadow-cyan-500/10'
+              : 'text-gray-500 hover:bg-gray-100'
           }`}
         >
           Premium
         </button>
+      
       </div>
     </div>
   )
